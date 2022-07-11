@@ -11,7 +11,7 @@ A new Flutter project.
 5.node index.js입력  
 6.AndroidStudio에서 코드실행  
 
-##UI 
+##UI
 
 ###로그인&회원가입 
 
