@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scc_flutter_app/tabs/observe_write_tab.dart';
 import 'item.dart';
 import 'package:scc_flutter_app/tabs/body_tab.dart';
 import 'package:scc_flutter_app/tabs/life_tab.dart';
@@ -10,7 +11,8 @@ import 'package:scc_flutter_app/services/shared_service.dart';
 import 'package:scc_flutter_app/page/patient_list_page.dart';
 import 'package:scc_flutter_app/page/home_page.dart';
 import 'package:scc_flutter_app/page/register_page.dart';
-
+import 'package:scc_flutter_app/tabs/note_tab.dart';
+import 'package:scc_flutter_app/tabs/write_page.dart';
 Widget _defaultHome = const LoginPage();
 
 void main() async {
@@ -38,7 +40,8 @@ class MyApp extends StatelessWidget {
         '/home' : (context) => const HomePage(),
         '/login' : (context) => const LoginPage(),
         '/register' : (context) => const RegisterPage(),
-
+        '/observe_write' : (context) => const Observe_write(),
+        '/write' : (context) => const WritePage(),
       },
       title: 'SCC',
       theme: ThemeData(

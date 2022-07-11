@@ -23,15 +23,18 @@ class _PatientListPageState extends State<PatientListPage> {
           centerTitle: true,
           backgroundColor: const Color(0xff16A085),
         ),
+
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
               ListTile(
-                leading: Icon(
-                  Icons.menu,
+                leading:  IconButton(icon: new Icon(Icons.menu,size: 30,),
+                  onPressed: () {
+                  Navigator.pop(context);
+                  },
                 ),
-                title: Text('dd'),
+                title: Text('texter02@gmail.com'),
                 trailing: IconButton(
                   icon: Icon(Icons.logout),
                   onPressed: () {

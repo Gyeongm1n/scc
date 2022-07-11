@@ -76,7 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Align(
                   alignment: Alignment.center,
                   child: Image.asset(
-                    "",
+                    "assets/images/scc.png",
                     width: 250,
                     fit: BoxFit.contain,
                   ),

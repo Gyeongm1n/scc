@@ -29,9 +29,7 @@ class _Main_tabState extends State<Main_tab> {
               title: Text(item.headerValue),
             );
           },
-          body: ListTile(
-            title: Text(item.expandedValue),
-          ),
+          body: item.expandedValue,
           isExpanded: item.isExpanded,
         );
       }).toList(),
@@ -107,6 +105,7 @@ class _Main_tabState extends State<Main_tab> {
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(width: 1, color: Colors.black),
                       ),
+                      child: Center(child: Text('최근 방문일\n2021-3-8', textAlign: TextAlign.center,)),
                     ),
                     SizedBox(
                       height: 10,
@@ -122,6 +121,7 @@ class _Main_tabState extends State<Main_tab> {
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(width: 1, color: Colors.black),
                       ),
+                      child: Center(child: Text('최근 활동 감지\n21분 18초 전', textAlign: TextAlign.center,)),
                     ),
                     SizedBox(
                       height: 10,
@@ -137,6 +137,7 @@ class _Main_tabState extends State<Main_tab> {
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(width: 1, color: Colors.black),
                       ),
+                      child: Center(child: Text('데이터 업데이트\n18분 36초 전', textAlign: TextAlign.center,)),
                     ),
                   ],
                 )

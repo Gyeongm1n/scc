@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scc_flutter_app/item.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:scc_flutter_app/RadioGroup.dart';
+import 'package:scc_flutter_app/main.dart';
 class Observe_tab extends StatefulWidget {
   const Observe_tab({Key? key}) : super(key: key);
 
@@ -27,7 +30,31 @@ class _Observe_tabState extends State<Observe_tab> {
             );
           },
           body: ListTile(
-            title: Text(item.expandedValue),
+            title: Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Container(
+                  child: SfCartesianChart(
+                      backgroundColor: Colors.white,
+                      primaryYAxis: NumericAxis(
+                        interval: 1,
+                      ),
+                      primaryXAxis: NumericAxis(
+                        interval: 1,
+                      ),
+                      series: <ChartSeries>[
+                        // Renders line chart
+                        LineSeries<ChartData, int>(
+                          dataSource: item.expandedValue2,
+                          xValueMapper: (ChartData data, _) => data.x,
+                          yValueMapper: (ChartData data, _) => data.y,
+                          markerSettings: MarkerSettings(isVisible: true),
+                        )
+                      ]
+                  ),
+                ),
+              ),
+            ),
           ),
           isExpanded: item.isExpanded,
         );
@@ -36,7 +63,16 @@ class _Observe_tabState extends State<Observe_tab> {
   }
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+
+    return Scaffold(
+      floatingActionButton:
+      FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed('/observe_write');
+        },
+        child: Icon(Icons.add,),
+      ),
+      body: SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(top:100),
         child:
@@ -46,6 +82,7 @@ class _Observe_tabState extends State<Observe_tab> {
           ],
         ),
       ),
+    ),
     );
   }
 }

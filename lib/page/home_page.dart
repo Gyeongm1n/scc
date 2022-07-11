@@ -17,36 +17,12 @@ class _Home_PageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Builder(builder: (BuildContext context) {
-        return _LoggedInUI(context);
-      },),
-    );
-  }
-
-  Widget _buildPanel(List<Item> items) {
-    return ExpansionPanelList(
-      expansionCallback: (int index, bool isExpanded) {
-        setState(() {
-          items[index].isExpanded = !isExpanded;
-        });
-      },
-      children: items.map<ExpansionPanel>((Item item) {
-        return ExpansionPanel(
-
-          /// ExpansionPanel은 header와 body로 구성되어 있습니다.
-          headerBuilder: (BuildContext context, bool isExpanded) {
-            return ListTile(
-              title: Text(item.headerValue),
-            );
-          },
-          body: ListTile(
-              title: Text(item.expandedValue),
-              ),
-          isExpanded: item.isExpanded,
-        );
-      }).toList(),
-    );
+    return _LoggedInUI(context);
+    // return MaterialApp(
+    //   home: Builder(builder: (BuildContext context) {
+    //     return _LoggedInUI(context);
+    //   },),
+    // );
   }
 
   Widget _LoggedInUI(BuildContext context) {
@@ -63,7 +39,6 @@ class _Home_PageState extends State<HomePage> {
                 children: [
                   IconButton(icon: new Icon(Icons.person_rounded,size: 30,),
                     onPressed: () {
-                    Navigator.pop(context);
                     },
                   ),
                   SizedBox(
@@ -75,7 +50,9 @@ class _Home_PageState extends State<HomePage> {
             ),
             leading: IconButton(
               icon: Icon(Icons.supervised_user_circle, size: 30,),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
           ),
           // 각 화면을 나타내는 곳
@@ -85,9 +62,7 @@ class _Home_PageState extends State<HomePage> {
               Life_tab(),
               Body_tab(),
               Observe_tab(),
-              Center(
-                child: Text('5'),
-              ),
+              Note_tab(),
             ],
           ),
           extendBodyBehindAppBar: true,

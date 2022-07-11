@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scc_flutter_app/item.dart';
-
+import 'package:syncfusion_flutter_charts/charts.dart';
 class Body_tab extends StatefulWidget {
   const Body_tab({Key? key}) : super(key: key);
 
@@ -28,7 +28,31 @@ class _Body_tabState extends State<Body_tab> {
             );
           },
           body: ListTile(
-            title: Text(item.expandedValue),
+            title: Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Container(
+                  child: SfCartesianChart(
+                      backgroundColor: Colors.white,
+                      primaryYAxis: NumericAxis(
+                        interval: 1,
+                      ),
+                      primaryXAxis: NumericAxis(
+                        interval: 1,
+                      ),
+                      series: <ChartSeries>[
+                        // Renders line chart
+                        LineSeries<ChartData, int>(
+                          dataSource: item.expandedValue2,
+                          xValueMapper: (ChartData data, _) => data.x,
+                          yValueMapper: (ChartData data, _) => data.y,
+                          markerSettings: MarkerSettings(isVisible: true),
+                        )
+                      ]
+                  ),
+                ),
+              ),
+            ),
           ),
           isExpanded: item.isExpanded,
         );
